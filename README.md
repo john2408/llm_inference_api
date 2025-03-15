@@ -2,6 +2,16 @@
 
 A lightweight API for running LLM (Large Language Model) inference using Ollama and FastAPI. This project allows you to deploy a local inference endpoint for small LLMs, making it easy to integrate with other applications.
 
+**Note**: The current implementation focuses on using the ollama API from host. This allows to keep the docker container size small (aprox. 645 MB) for local testing.
+
+If you want to change the behaviour, adjust the file `main.py`:
+
+```python
+ollama_client = ollama.Client(host=f"http://host.docker.internal:{OLLAMA_PORT}")
+```
+
+Inside the `Dockerfile`, the commented sections outline the steps required to install the Ollama server within the Docker container.
+
 ## Features
 
 - **FastAPI**: High-performance API framework for building the inference endpoint.
