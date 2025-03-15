@@ -18,14 +18,18 @@ Before running the project, ensure you have the following installed:
 - **Python 3.9+**: (Optional, for local development)
 
 ## Project Structure
+```bash
 .
 ├── app/
 │   ├── __init__.py
-│   ├── main.py          # FastAPI app
-│   └── config.py        # Configuration classes
-├── requirements.txt     # Dependencies
-├── Dockerfile           # Docker configuration
-└── start.sh             # Startup script 
+│   ├── main.py           # FastAPI app
+│   └── config.py         # Configuration classes
+├── requirements.txt      # Dependencies
+├── Dockerfile            # Docker configuration
+├── .devcontainer       
+│   ├── devcontainer.json # Devcontainer config
+└── start.sh              # Startup script 
+```
 
 # Quick Start
 
@@ -50,3 +54,48 @@ docker run -p 8000:8000 -p 11434:11434 ollama-api
 
 - FastAPI: Access the API at `http://localhost:8000`.
 - Ollama: Ensure Ollama is running on the host machine at port `11434`
+
+
+## API Endpoints
+
+**Generate Text**
+
+- **Endpoint**: POST /generate
+
+- **Request Body:**
+
+```json
+{
+  "prompt": "What is the capital of France?",
+  "config": {
+    "model": "llama3.2:latest",
+    "max_tokens": 100,
+    "temperature": 0.7
+  }
+}
+``` 
+
+- **Response:**
+```json
+{
+  "response": "The capital of France is Paris."
+}
+```
+
+# Contributing
+
+Contributions are welcome! Please follow these steps:
+
+- Fork the repository.
+- Create a new branch for your feature or bugfix.
+- Submit a pull request with a detailed description of your changes.
+
+# License
+
+This project is licensed under the MIT License. See the LICENSE file for details
+
+# Acknowledgments
+
+**Ollama**: For providing an easy-to-use LLM inference framework.
+**FastAPI**: For enabling high-performance API development.
+**Docker**: For simplifying deployment and scalability.
